@@ -518,7 +518,7 @@ with st.sidebar:
     st.divider()
     page = st.radio(
         "Navigation Menu",
-        ["Dashboard & Search", "Sales (POS) & Print", "Inventory Management", "Admin Panel", "Download app.py"],
+        ["Dashboard & Search", "Sales (POS) & Print", "Inventory Management", "Admin Panel"],
         index=0
     )
     
