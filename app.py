@@ -149,7 +149,6 @@ if not st.session_state.logged_in:
             if submit_btn:
                 handle_login(email_input, password_input)
 
-        
     st.stop()
 
 # ==============================================================================
@@ -831,8 +830,13 @@ elif page == "Inventory Management":
                 with col_i5:
                     # Suggestion tab / checkbox for 5% profit or manual insertion
                     use_5pct = st.checkbox("Apply 5% Profit Suggestion", value=True, key=f"shp_item_use_5pct_{idx}")
-                    default_selling = suggested_5pct if use_5pct else round(landed_cost * 1.10, 2)
-                    i_sell = st.number_input(f"Selling Price (৳) #{idx+1}", min_value=0.0, value=default_selling, step=25.0, format="%.2f", key=f"shp_item_sell_{idx}", help="Can be set via 5% suggestion tab or entered manually")
+                    
+                    # Force Streamlit to update the widget state if the box is checked
+                    widget_key = f"shp_item_sell_{idx}"
+                    if use_5pct:
+                        st.session_state[widget_key] = suggested_5pct
+                        
+                    i_sell = st.number_input(f"Selling Price (৳) #{idx+1}", min_value=0.0, step=25.0, format="%.2f", key=widget_key, help="Can be set via 5% suggestion tab or entered manually")
 
                 item_data_collected.append({
                     "name": i_name,
@@ -1048,5 +1052,3 @@ elif page == "Admin Panel":
                     st.error(f"Failed to provision user: {e}")
             else:
                 st.warning("Please provide a valid email and a password with at least 6 characters.")
-
-
