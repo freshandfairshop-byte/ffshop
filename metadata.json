@@ -1,0 +1,6 @@
+{
+  "name": "Cloud Inventory & POS Suite",
+  "description": "Enterprise Streamlit and Supabase multi-user inventory management, POS terminal, audit trail, and legacy data migration system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
