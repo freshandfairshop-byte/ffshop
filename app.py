@@ -149,7 +149,7 @@ if not st.session_state.logged_in:
             if submit_btn:
                 handle_login(email_input, password_input)
 
-        st.info("💡 Default Seed Account: `admin@company.com` | Password: `adminpassword123`")
+        
     st.stop()
 
 # ==============================================================================
